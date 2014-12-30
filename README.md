@@ -1,14 +1,41 @@
 # key-drone
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to allow an AR Drone to be controlled from the keyboard.
+
+Writen to help me learn clojure so dont read the code.
 
 ## Usage
 
-FIXME
+bin/key-drone
 
-## License
+Keyboard:
+- Arrow right
+- Arrow left
+- Arrow up
+- Arrow down
+- u
+- d
 
-Copyright © 2014 FIXME
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Design
+======
+Trying to think functional, so transactions, some input that is transformed and then output.
+
+Transaction initiation:
+- app startup
+  - Configuration
+    - input: configuration file. 
+    - transform: convert json into data structure.
+    - output: imulatable data struct in memory.
+  - Network
+    - input: network configuratio.
+    - transform: format data packet header.
+    - output: ping network
+  - Drone Initialize
+    - input: network
+    - transform: none
+    - output: ping drone
+
+Transaction initiation:
+- up arrow
+  - ...

@@ -2,6 +2,7 @@
   (:require [clojure.test :refer :all]
             [key-drone.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest runs-main
+  (testing "runs main"
+    (is (= 0 (key-drone)))))
+

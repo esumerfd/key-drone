@@ -1,6 +1,8 @@
 (defproject key-drone "0.1.0-SNAPSHOT"
   :description "Keyboard Driven Drone"
-  :url ""
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.6.0"]])
+  :url "https://github.com/esumerfd/key-drone"
+  :license {:name "MIT License" :url "http://opensource.org/licenses/MIT"}
+  :main key-drone.core
+  :dependencies [[org.clojure/clojure "1.6.0"]
+                 [clj-drone "0.1.8"]])
+

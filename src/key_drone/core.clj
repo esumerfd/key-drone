@@ -1,6 +1,14 @@
-(ns key-drone.core)
+(ns key-drone.core
+  (:require  [clojure.java.io :as io])
+  (:gen-class :main true))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn key-drone
+  "Key drone startup"
+  []
+  (println "Starting Key Drone")
+  (int 0))
+
+(defn -main
+  "Command  line entry point for key-drone"
+  [& args]
+  (key-drone))

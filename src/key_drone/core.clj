@@ -1,4 +1,5 @@
 (ns key-drone.core
+  (:use clj-drone.core)
   (:require  [clojure.java.io :as io])
   (:gen-class :main true))
 
@@ -6,6 +7,16 @@
   "Key drone startup"
   []
   (println "Starting Key Drone")
+
+  (drone-initialize)
+
+  ;Some stuff that will move
+  (drone :take-off)
+  (println "Waiting for drone to takeoff")
+  (Thread/sleep 5000)
+  (drone :land)
+
+
   (int 0))
 
 (defn -main

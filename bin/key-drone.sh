@@ -3,6 +3,8 @@
 # key-drone
 #
 # Keyboard control of an AR Drone.
+#
+# Build using: lein uberjar
 # #################################################################################
 
 if [[ -z $CLOJURE_HOME ]]; then

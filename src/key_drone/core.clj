@@ -1,6 +1,7 @@
 (ns key-drone.core
   (:use clj-drone.core)
   (:require  [clojure.java.io :as io])
+  (:import  [jline.console ConsoleReader])
   (:gen-class :main true))
 
 (defn key-drone
@@ -8,13 +9,18 @@
   []
   (println "Starting Key Drone")
 
-  (drone-initialize)
+  (while true
+    (let [cr (ConsoleReader.)
+          keyint (.readCharacter cr)]
+      (println (format "Got %d ('%c')!" keyint (char keyint)))))
 
-  ;Some stuff that will move
-  (drone :take-off)
-  (println "Waiting for drone to takeoff")
-  (Thread/sleep 5000)
-  (drone :land)
+  ;(drone-initialize)
+
+  ;;Some stuff that will move
+  ;(drone :take-off)
+  ;(println "Waiting for drone to takeoff")
+  ;(Thread/sleep 5000)
+  ;(drone :land)
 
 
   (int 0))

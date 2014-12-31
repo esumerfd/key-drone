@@ -9,12 +9,13 @@ Writen to help me learn clojure so dont read the code.
 bin/key-drone
 
 Keyboard:
-- Arrow right
-- Arrow left
-- Arrow up
-- Arrow down
-- u
-- d
+- Arrow right - tilt right
+- Arrow left  - tilt left
+- Arrow up    - tilt forward
+- Arrow down  - tilt backward
+- u           - up
+- d           - down
+- q           - quit
 
 
 Design
@@ -37,5 +38,12 @@ Transaction initiation:
     - output: ping drone
 
 Transaction initiation:
-- up arrow
-  - ...
+- Control Loop
+  - input: keystroke
+  - transformation: movement operation
+  - output: success/failure of movement
+- Movement
+  - input: keystroke
+  - movement operation
+  - output: success/failure of transformation
+

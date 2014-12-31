@@ -9,6 +9,8 @@ Writen to help me learn clojure so dont read the code.
 bin/key-drone
 
 Keyboard:
+- t           - takeoff
+- l           - land
 - Arrow right - tilt right
 - Arrow left  - tilt left
 - Arrow up    - tilt forward

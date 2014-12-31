@@ -1,8 +1,50 @@
 (ns key-drone.core
   (:use clj-drone.core)
-  (:require  [clojure.java.io :as io])
+  (:require  
+    [clojure.java.io :as io]
+    [clojure.string :as string]
+    )
   (:import  [jline.console ConsoleReader])
   (:gen-class :main true))
+
+(defn log
+  [message]
+  (println message)
+  )
+
+(defn navigate
+  [nav-plan]
+  (try
+    (drone nav-plan)
+    (catch java.io.IOException e  
+      (log (str "caught exception: "  (.getMessage e)))))
+  )
+
+(defn navigate-takeoff
+  []
+  (log "Drone taking off")
+  (navigate :take-off)
+  true
+  )
+
+(defn navigate-land
+  []
+  (log "Drone landing")
+  (navigate :land)
+  true
+  )
+
+(defn invalid-key
+  []
+  (log "Invalid key pressed")
+  true
+  )
+
+(defn quit
+  []
+  (log "Closing down")
+  false
+  )
 
 ;input: ascii code of key
 ;transform: apply function associsated with key
@@ -13,12 +55,14 @@
 (defn key-handler
   [asciiCode]
 
-  ;;Some stuff that will move
-  ;(drone :take-off)
-  ;(Thread/sleep 5000)
-  ;(drone :land)
-
-   (not= "Q" (clojure.string/upper-case (char asciiCode)))
+  (let [keypressed (string/upper-case (char asciiCode))]
+    (cond
+      (= keypressed "T") (navigate-takeoff)
+      (= keypressed "L") (navigate-land)
+      (= keypressed "Q") (quit)
+      :else (invalid-key)
+      )    
+    )
   )
 
 ;input: key press handler
@@ -51,9 +95,9 @@
 (defn key-drone
   "Key drone startup"
   []
-  (println "Starting Key Drone (q to quit)")
+  (log "Starting Key Drone (q to quit)")
 
-  ;(drone-initialize)
+  (drone-initialize)
 
   (control-loop key-handler)
 

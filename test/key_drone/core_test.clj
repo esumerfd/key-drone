@@ -4,17 +4,28 @@
 
 (deftest key-handler-test
 
-  (testing "navigation character"
-    (is (= true (key-handler 101)))
+  (testing "takeoff condition"
+    (with-redefs [navigate-takeoff (fn [] "takeoff")]
+      (is (= "takeoff" (key-handler (int \t))))
+      (is (= "takeoff" (key-handler (int \T))))
+      )
+    )
+
+  (testing "land condition"
+    (with-redefs [navigate-land (fn [] "land")]
+      (is (= "land" (key-handler (int \l))))
+      (is (= "land" (key-handler (int \L))))
+      )
+    )
+
+  (testing "quit character"
+    (is (= false (key-handler (int \q))))
+    (is (= false (key-handler (int \Q))))
+    )
+
+  (testing "invalid keystroke"
+    (is (= true (key-handler (int \e))))
     )   
-
-  (testing "lower case quit character"
-    (is (= false (key-handler 113)))
-    )
-
-  (testing "upper case quit character"
-    (is (= false (key-handler 81)))
-    )
   )
 
 (deftest control-loop-test

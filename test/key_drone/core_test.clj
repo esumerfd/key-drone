@@ -2,11 +2,6 @@
   (:require [clojure.test :refer :all]
             [key-drone.core :refer :all]))
 
-(deftest pressed-keys-test
-  ;(testing "pressed-keys"
-  ;(is (= 13 (pressed-keys #(+ 0 %)))))
-  )
-
 (deftest key-handler-test
 
   (testing "navigation character"
@@ -19,6 +14,14 @@
 
   (testing "upper case quit character"
     (is (= false (key-handler 81)))
+    )
+  )
+
+(deftest control-loop-test
+  (testing "exit after false is returned"
+    (with-redefs  [pressed-keys (fn [key-press-handler] (key-press-handler "ignored") )]
+      (control-loop (fn [ignored] false))
+      )
     )
   )
 

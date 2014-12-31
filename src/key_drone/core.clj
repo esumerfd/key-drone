@@ -29,7 +29,6 @@
 (defn pressed-keys
   "generates keystrokes"
   [key-press-handler]
-
   (let [reader (ConsoleReader.) 
         asciiCode (.readCharacter reader)]
     (key-press-handler asciiCode)

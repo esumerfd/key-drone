@@ -16,24 +16,25 @@ bin/key-drone
 
 Keyboard (VI ish keys)
 
-| Key                    | Action        |
-|------------------------|---------------|
-| t                      | takeoff       |
-| g                      | land          |
-| l                      | tilt right    |
-| h                      | tilt left     |
-| k                      | tilt forward  |
-| j                      | tilt backward |
-| u                      | up            |
-| d                      | down          |
-| q                      | quit          |
+| Key                      | Action          | Description                                                        |
+| ------------------------ | --------------- |--------------------------------------------------------------------|
+| t                        | takeoff         | up to 1 m and hover                                                |
+| g                        | land            | controlled decent to ground                                        |
+| l                        | tilt right      | angle props down to left for 1 second to make drone move right     |
+| h                        | tilt left       | angle props down to right for 1 second to make drone move left     |
+| k                        | tilt forward    | angle props down to back for 1 second to make drone move forward   |
+| j                        | tilt backward   | angle props down to front for 1 second to make drone move backward |
+| u                        | up              | increase rotations to increase altitude                            |
+| d                        | down            | decrease rotations to decrease altitude                            |
+| e                        | emergency       | reset after crash                                                  |
+| q                        | quit            | exit the program. Please land first.                               |
 
 Backlog
 =======
-- drone re-initialize if network not available
 - speed control
 - config loading
 - flight sequences
+- drone re-initialize if network not available
 
 Design
 ======

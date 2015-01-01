@@ -166,7 +166,7 @@
   (int 0))
 
 (defn -main
-  "Command  line entry point for key-drone"
+  "Command line entry point for key-drone"
   [& args]
   (key-drone))
 

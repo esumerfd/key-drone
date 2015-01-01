@@ -13,66 +13,59 @@
   )
 
 (defn navigate
-  [nav-plan]
+  [nav-plan & args]
   (try
-    (drone nav-plan)
+    (log (str "Drone " nav-plan " at " args))
+    (apply drone nav-plan args)
     (catch java.io.IOException e  
       (log (str "caught exception: "  (.getMessage e)))))
   )
 
 (defn navigate-takeoff
   []
-  (log "Drone taking off")
   (navigate :take-off)
   true
   )
 
 (defn navigate-land
   []
-  (log "Drone landing")
   (navigate :land)
   true
   )
 
  (defn navigate-left
   []
-  (log "Drone left")
-  (navigate :tilt-left)
+  (navigate :tilt-left 1)
   true
   )
 
 (defn navigate-right
   []
-  (log "Drone right")
-  (navigate :tilt-right)
+  (navigate :tilt-right 1)
   true
   )
 
 (defn navigate-forward
   []
-  (log "Drone forward")
-  (navigate :tilt-front)
+  (navigate :tilt-front 1)
   true
   )
 
 (defn navigate-backward
   []
-  (log "Drone backward")
-  (navigate :tilt-back)
+  (navigate :tilt-back 1)
   true
   )
 
 (defn navigate-up
   []
-  (log "Drone up")
-  (navigate :up)
+  (navigate :up 1)
   true
   )
 
 (defn navigate-down
   []
-  (log "Drone down")
-  (navigate :down)
+  (navigate :down 1)
   true
   )
 

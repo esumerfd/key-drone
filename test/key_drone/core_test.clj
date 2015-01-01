@@ -4,6 +4,48 @@
 
 (deftest key-handler-test
 
+  (testing "left condition"
+    (with-redefs [navigate-left (fn [] "left")]
+      (is (= "left" (key-handler (int \h))))
+      (is (= "left" (key-handler (int \H))))
+      )
+    )
+
+  (testing "right condition"
+    (with-redefs [navigate-right (fn [] "right")]
+      (is (= "right" (key-handler (int \l))))
+      (is (= "right" (key-handler (int \L))))
+      )
+    )
+
+  (testing "forward condition"
+    (with-redefs [navigate-forward (fn [] "forward")]
+      (is (= "forward" (key-handler (int \k))))
+      (is (= "forward" (key-handler (int \K))))
+      )
+    )
+
+  (testing "backward condition"
+    (with-redefs [navigate-backward (fn [] "backward")]
+      (is (= "backward" (key-handler (int \j))))
+      (is (= "backward" (key-handler (int \J))))
+      )
+    )
+
+  (testing "up condition"
+    (with-redefs [navigate-up (fn [] "up")]
+      (is (= "up" (key-handler (int \u))))
+      (is (= "up" (key-handler (int \U))))
+      )
+    )
+
+  (testing "down condition"
+    (with-redefs [navigate-down (fn [] "down")]
+      (is (= "down" (key-handler (int \d))))
+      (is (= "down" (key-handler (int \D))))
+      )
+    )
+
   (testing "takeoff condition"
     (with-redefs [navigate-takeoff (fn [] "takeoff")]
       (is (= "takeoff" (key-handler (int \t))))
@@ -13,8 +55,8 @@
 
   (testing "land condition"
     (with-redefs [navigate-land (fn [] "land")]
-      (is (= "land" (key-handler (int \l))))
-      (is (= "land" (key-handler (int \L))))
+      (is (= "land" (key-handler (int \g))))
+      (is (= "land" (key-handler (int \G))))
       )
     )
 

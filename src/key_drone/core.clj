@@ -34,6 +34,48 @@
   true
   )
 
+ (defn navigate-left
+  []
+  (log "Drone left")
+  (navigate :tilt-left)
+  true
+  )
+
+(defn navigate-right
+  []
+  (log "Drone right")
+  (navigate :tilt-right)
+  true
+  )
+
+(defn navigate-forward
+  []
+  (log "Drone forward")
+  (navigate :tilt-front)
+  true
+  )
+
+(defn navigate-backward
+  []
+  (log "Drone backward")
+  (navigate :tilt-back)
+  true
+  )
+
+(defn navigate-up
+  []
+  (log "Drone up")
+  (navigate :up)
+  true
+  )
+
+(defn navigate-down
+  []
+  (log "Drone down")
+  (navigate :down)
+  true
+  )
+
 (defn invalid-key
   []
   (log "Invalid key pressed")
@@ -58,7 +100,13 @@
   (let [keypressed (string/upper-case (char asciiCode))]
     (cond
       (= keypressed "T") (navigate-takeoff)
-      (= keypressed "L") (navigate-land)
+      (= keypressed "G") (navigate-land)
+      (= keypressed "H") (navigate-left)
+      (= keypressed "L") (navigate-right)
+      (= keypressed "K") (navigate-forward)
+      (= keypressed "J") (navigate-backward)
+      (= keypressed "U") (navigate-up)
+      (= keypressed "D") (navigate-down)
       (= keypressed "Q") (quit)
       :else (invalid-key)
       )    

@@ -8,21 +8,25 @@ Writen to help me learn clojure so dont read the code.
 
 bin/key-drone
 
-Keyboard:
-- t           - takeoff
-- l           - land
-- Arrow right - tilt right
-- Arrow left  - tilt left
-- Arrow up    - tilt forward
-- Arrow down  - tilt backward
-- u           - up
-- d           - down
-- q           - quit
+Keyboard (VI ish keys):
+- t - takeoff
+- g - land
+- l - tilt right
+- h - tilt left
+- k - tilt forward
+- j - tilt backward
+- u - up
+- d - down
+- q - quit
 
 
 Design
 ======
 Trying to think functional, so transactions, some input that is transformed and then output.
+
+Design Strategies:
+- all state passed by argument
+- 
 
 Transaction initiation:
 - app startup

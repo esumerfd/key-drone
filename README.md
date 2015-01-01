@@ -14,17 +14,18 @@ Writen to help me learn clojure so dont read the code.
 
 bin/key-drone
 
-|Keyboard (VI ish keys)|
-| Key | Action |
-| t | takeoff
-| g | land
-| l | tilt right
-| h | tilt left
-| k | tilt forward
-| j | tilt backward
-| u | up
-| d | down
-| q | quit
+Keyboard (VI ish keys)
+| Key                    | Action        |
+|------------------------|---------------|
+| t                      | takeoff       |
+| g                      | land          |
+| l                      | tilt right    |
+| h                      | tilt left     |
+| k                      | tilt forward  |
+| j                      | tilt backward |
+| u                      | up            |
+| d                      | down          |
+| q                      | quit          |
 
 
 Design

@@ -23,6 +23,10 @@
      \T :take-off
      \g :land
      \G :land
+     \s :spin-right
+     \S :spin-right
+     \A :spin-left
+     \a :spin-left
      }
     )
 
@@ -33,19 +37,19 @@
           ]
       (testing (str "should navigate " expected-nav-plan " with " key-char)
         (with-redefs [navigate (fn [actual-nav-plan & args] (is (= expected-nav-plan actual-nav-plan)))]
-          (key-handler (int key-char))
+          (is (= :continue (key-handler (int key-char)) )) 
           )
         )
       )
     )
 
   (testing "should quit program"
-    (is (= false (key-handler (int \q))))
-    (is (= false (key-handler (int \Q))))
+    (is (= :quit (key-handler (int \q))))
+    (is (= :quit (key-handler (int \Q))))
     )
 
   (testing "should handle invalid keystroke"
-    (is (= true (key-handler (int \e))))
+    (is (= :invalid (key-handler (int \e))))
     )   
   )
 
@@ -59,9 +63,9 @@
   )
 
 (deftest control-loop-test
-  (testing "exit after false is returned"
+  (testing "exit after quit is returned"
     (with-redefs  [pressed-keys (fn [key-press-handler] (key-press-handler "ignored") )]
-      (control-loop (fn [ignored] false))
+      (control-loop (fn [ignored] :quit))
       )
     )
   )

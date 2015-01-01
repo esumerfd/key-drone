@@ -24,61 +24,73 @@
 (defn navigate-takeoff
   []
   (navigate :take-off)
-  true
+  :continue
   )
 
 (defn navigate-land
   []
   (navigate :land)
-  true
+  :continue
   )
 
  (defn navigate-left
   []
   (navigate :tilt-left 1)
-  true
+  :continue
   )
 
 (defn navigate-right
   []
   (navigate :tilt-right 1)
-  true
+  :continue
   )
 
 (defn navigate-forward
   []
   (navigate :tilt-front 1)
-  true
+  :continue
   )
 
 (defn navigate-backward
   []
   (navigate :tilt-back 1)
-  true
+  :continue
+  )
+
+(defn navigate-spin-right
+  []
+  (navigate :spin-right 1)
+  :continue
+  )
+
+(defn navigate-spin-left
+  []
+  (navigate :spin-left 1)
+  :continue
   )
 
 (defn navigate-up
   []
   (navigate :up 1)
-  true
+  :continue
   )
 
 (defn navigate-down
   []
   (navigate :down 1)
-  true
+  :continue
   )
 
 (defn invalid-key
   []
   (log "Invalid key pressed")
-  true
+  :invalid
   )
 
 (defn quit
   []
   (log "Closing down")
-  false
+  :quit
   )
 
 ;input: ascii code of key
@@ -98,6 +110,8 @@
       (= keypressed "L") (navigate-right)
       (= keypressed "K") (navigate-forward)
       (= keypressed "J") (navigate-backward)
+      (= keypressed "S") (navigate-spin-right)
+      (= keypressed "A") (navigate-spin-left)
       (= keypressed "U") (navigate-up)
       (= keypressed "D") (navigate-down)
       (= keypressed "Q") (quit)
@@ -127,7 +141,7 @@
 ; - control handler
 (defn control-loop
   [control-handler]
-  (while (pressed-keys control-handler))
+  (while (not= :quit (pressed-keys control-handler)))
   )
 
 ;input: none

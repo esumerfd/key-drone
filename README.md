@@ -15,6 +15,7 @@ Writen to help me learn clojure so dont read the code.
 bin/key-drone
 
 Keyboard (VI ish keys)
+
 | Key                    | Action        |
 |------------------------|---------------|
 | t                      | takeoff       |
@@ -27,6 +28,11 @@ Keyboard (VI ish keys)
 | d                      | down          |
 | q                      | quit          |
 
+Backlog
+=======
+- speed control
+- config loading
+- flight sequences
 
 Design
 ======

@@ -81,6 +81,12 @@
   :continue
   )
 
+(defn navigate-emergency
+  []
+  (navigate :emergency)
+  :continue
+  )
+
 (defn invalid-key
   []
   (log "Invalid key pressed")
@@ -114,6 +120,7 @@
       (= keypressed "A") (navigate-spin-left)
       (= keypressed "U") (navigate-up)
       (= keypressed "D") (navigate-down)
+      (= keypressed "E") (navigate-emergency)
       (= keypressed "Q") (quit)
       :else (invalid-key)
       )    

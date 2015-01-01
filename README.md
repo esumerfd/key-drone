@@ -2,7 +2,7 @@
 
 A Clojure library designed to allow an AR Drone to be controlled from the keyboard.
 
-Writen to help me learn clojure so dont read the code.
+Writen to help me learn clojure so feel free to send me code improvement ideas.
 
 ## Install
 
@@ -30,6 +30,7 @@ Keyboard (VI ish keys)
 
 Backlog
 =======
+- drone re-initialize if network not available
 - speed control
 - config loading
 - flight sequences

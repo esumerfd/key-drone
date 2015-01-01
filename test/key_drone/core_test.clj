@@ -27,6 +27,8 @@
      \S :spin-right
      \A :spin-left
      \a :spin-left
+     \E :emergency
+     \e :emergency
      }
     )
 
@@ -49,7 +51,7 @@
     )
 
   (testing "should handle invalid keystroke"
-    (is (= :invalid (key-handler (int \e))))
+    (is (= :invalid (key-handler (int \X))))
     )   
   )
 

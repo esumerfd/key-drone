@@ -1,4 +1,5 @@
 (ns key-drone.core-test
+  (:use clj-drone.core)
   (:require [clojure.test :refer :all]
             [key-drone.core :refer :all]))
 
@@ -46,6 +47,15 @@
   (testing "should handle invalid keystroke"
     (is (= true (key-handler (int \e))))
     )   
+  )
+
+(deftest navigate-test
+  (testing "should catch io exceptions and log message"
+    (with-redefs 
+      [drone (fn [nav-plan] (throw (java.io.IOException. "OOPS: expected exception")))] 
+      (navigate :up)
+      )
+    )
   )
 
 (deftest control-loop-test

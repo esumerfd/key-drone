@@ -4,68 +4,46 @@
 
 (deftest key-handler-test
 
-  (testing "left condition"
-    (with-redefs [navigate-left (fn [] "left")]
-      (is (= "left" (key-handler (int \h))))
-      (is (= "left" (key-handler (int \H))))
+  (def navigation-keymap 
+    {
+     \h :tilt-left      
+     \H :tilt-left      
+     \l :tilt-right
+     \L :tilt-right
+     \u :up
+     \U :up
+     \d :down
+     \D :down
+     \j :tilt-back
+     \J :tilt-back
+     \k :tilt-front
+     \K :tilt-front
+     \t :take-off
+     \T :take-off
+     \g :land
+     \G :land
+     }
+    )
+
+  (doseq [keymap navigation-keymap] 
+    (let [
+          key-char (first keymap)
+          expected-nav-plan (second keymap)
+          ]
+      (testing (str "should navigate " expected-nav-plan " with " key-char)
+        (with-redefs [navigate (fn [actual-nav-plan] (is (= expected-nav-plan actual-nav-plan)))]
+          (key-handler (int key-char))
+          )
+        )
       )
     )
 
-  (testing "right condition"
-    (with-redefs [navigate-right (fn [] "right")]
-      (is (= "right" (key-handler (int \l))))
-      (is (= "right" (key-handler (int \L))))
-      )
-    )
-
-  (testing "forward condition"
-    (with-redefs [navigate-forward (fn [] "forward")]
-      (is (= "forward" (key-handler (int \k))))
-      (is (= "forward" (key-handler (int \K))))
-      )
-    )
-
-  (testing "backward condition"
-    (with-redefs [navigate-backward (fn [] "backward")]
-      (is (= "backward" (key-handler (int \j))))
-      (is (= "backward" (key-handler (int \J))))
-      )
-    )
-
-  (testing "up condition"
-    (with-redefs [navigate-up (fn [] "up")]
-      (is (= "up" (key-handler (int \u))))
-      (is (= "up" (key-handler (int \U))))
-      )
-    )
-
-  (testing "down condition"
-    (with-redefs [navigate-down (fn [] "down")]
-      (is (= "down" (key-handler (int \d))))
-      (is (= "down" (key-handler (int \D))))
-      )
-    )
-
-  (testing "takeoff condition"
-    (with-redefs [navigate-takeoff (fn [] "takeoff")]
-      (is (= "takeoff" (key-handler (int \t))))
-      (is (= "takeoff" (key-handler (int \T))))
-      )
-    )
-
-  (testing "land condition"
-    (with-redefs [navigate-land (fn [] "land")]
-      (is (= "land" (key-handler (int \g))))
-      (is (= "land" (key-handler (int \G))))
-      )
-    )
-
-  (testing "quit character"
+  (testing "should quit program"
     (is (= false (key-handler (int \q))))
     (is (= false (key-handler (int \Q))))
     )
 
-  (testing "invalid keystroke"
+  (testing "should handle invalid keystroke"
     (is (= true (key-handler (int \e))))
     )   
   )

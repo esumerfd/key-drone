@@ -1,6 +1,6 @@
 # key-drone
 
-A Clojure library designed to allow an AR Drone to be controlled from the keyboard.
+A Clojure library designed to allow an AR Drone to be controlled from the keyboard. This is an extensio of the awesome work by @gigasquid on https://github.com/gigasquid/clj-drone.
 
 Writen to help me learn clojure so feel free to send me code improvement ideas.
 

@@ -103,7 +103,7 @@
 ;transform: apply function associsated with key
 ;output: :continue, :quit
 ;implements interfaces:
-; - control handler (output true/false)
+; - control handler (output :quit or anything else)
 ; - key press handler (input asciiCode, output: true/false)
 (defn key-handler
   [asciiCode]

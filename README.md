@@ -40,18 +40,7 @@ Design
 ======
 Trying to think functional, so transactions, some input that is transformed and then output.
 
-Transaction initiation:
-- Control Loop
-  - input: keystroke
-  - transformation: movement operation
-  - output: success/failure of movement
-- Movement
-  - input: keystroke
-  - transformation: movement operation
-  - output: success/failure of transformation
-
-Transaction initiation:
-- app startup
+- App startup
   - Configuration
     - input: configuration file. 
     - transform: convert json into data structure.
@@ -64,5 +53,12 @@ Transaction initiation:
     - input: network
     - transform: none
     - output: ping drone
-
+- Control Loop
+  - input: control handler
+  - transformation: pressed keys to control handler
+  - output: void
+- Movement
+  - input: keystroke
+  - transformation: movement operation
+  - output: :quit symbol or any other.
 

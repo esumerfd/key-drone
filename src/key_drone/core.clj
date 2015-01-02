@@ -101,7 +101,7 @@
 
 ;input: ascii code of key
 ;transform: apply function associsated with key
-;output: true/false for quit key pressed
+;output: :continue, :quit
 ;implements interfaces:
 ; - control handler (output true/false)
 ; - key press handler (input asciiCode, output: true/false)

@@ -38,8 +38,8 @@
           expected-nav-plan (second keymap)
           ]
       (testing (str "should navigate " expected-nav-plan " with " key-char)
-        (with-redefs [navigate (fn [actual-nav-plan & args] (is (= expected-nav-plan actual-nav-plan)))]
-          (is (= :continue (key-handler (int key-char)) )) 
+        (with-redefs [drone (fn [actual-nav-plan & args] (is (= expected-nav-plan actual-nav-plan)))] 
+          (is (= :continue (key-handler (int key-char)))) 
           )
         )
       )
@@ -57,8 +57,7 @@
 
 (deftest navigate-test
   (testing "should catch io exceptions and log message"
-    (with-redefs 
-      [drone (fn [nav-plan & args] (throw (java.io.IOException. "OOPS: expected exception")))] 
+    (with-redefs [drone (fn [nav-plan & args] (throw (java.io.IOException. "OOPS: expected exception")))] 
       (navigate :up 1)
       )
     )
